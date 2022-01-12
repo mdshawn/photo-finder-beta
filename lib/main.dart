@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:photo_finder/gallery_state.dart';
 import 'package:photo_finder/gallery_view.dart';
+import 'package:provider/provider.dart';
 
-void main(List<String> args) {
-  runApp(SearchPage());
+void main() {
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => GalleryState()),
+      ],
+      child: SearchPage(),
+    ),
+  );
 }
 
 class SearchPage extends StatelessWidget {
