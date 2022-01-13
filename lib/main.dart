@@ -16,7 +16,7 @@ void main() {
 }
 
 class SearchPage extends StatelessWidget {
-  final TextEditingController searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class SearchPage extends StatelessWidget {
                 )),
             ListTile(
               title: TextFormField(
-                controller: searchController,
+                controller: _searchController,
                 decoration: InputDecoration(
                   hintText: "Eg Dogs, Cats & Bananas",
                   labelText: "Enter a category",
@@ -59,7 +59,8 @@ class SearchPage extends StatelessWidget {
               height: 40,
               child: ElevatedButton(
                 onPressed: () {
-                  Get.to(GalleryView());
+                  // Navigator.of(context).push(MaterialPageRoute(builder: (context)=>GalleryView(searchdata: _searchController.text)));
+                  Get.to(() => GalleryView(searchdata: _searchController.text));
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(20),
